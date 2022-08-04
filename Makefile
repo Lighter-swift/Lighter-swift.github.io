@@ -7,7 +7,8 @@ LOCAL_REPO_PATH="$(PWD)"
 CHECKOUT_PATH="$(LOCAL_REPO_PATH)/checkout"
 OUTPUT_PATH="$(LOCAL_REPO_PATH)/docs"
 
-all : lighter-docs
+# TODO: Need to merge the outputs
+all : sqlite3schema-docs lighter-docs
 
 clean:
 	rm -rf .build checkout docs Package.resolved
@@ -33,6 +34,17 @@ lighter-docs: checkout-or-update
 	  --allow-writing-to-directory "$(OUTPUT_PATH)" \
 	  generate-documentation \
 	  --target Lighter \
+	  --disable-indexing \
+	  --transform-for-static-hosting \
+	  --hosting-base-path "$(BASEPATH)" \
+	  --output-path "$(OUTPUT_PATH)"
+
+sqlite3schema-docs: checkout-or-update
+	cd $(CHECKOUT_PATH)/Lighter; \
+	swift package \
+	  --allow-writing-to-directory "$(OUTPUT_PATH)" \
+	  generate-documentation \
+	  --target SQLite3Schema \
 	  --disable-indexing \
 	  --transform-for-static-hosting \
 	  --hosting-base-path "$(BASEPATH)" \
