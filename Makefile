@@ -8,7 +8,8 @@ CHECKOUT_PATH="$(LOCAL_REPO_PATH)/checkout"
 OUTPUT_PATH="$(LOCAL_REPO_PATH)/docs"
 
 # TODO: Need to merge the outputs
-all : sqlite3schema-docs lighter-docs
+all : lighter-docs
+	cp docs-index.html docs/index.html
 
 clean:
 	rm -rf .build checkout docs Package.resolved
