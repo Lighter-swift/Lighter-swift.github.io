@@ -1,6 +1,6 @@
 # Makefile
 
-ORGNAME="55DB091A-8471-447B-8F50-5DFF4C1B14AC"
+ORGNAME="lighter-swift"
 REPO_URL="git@github.com:$(ORGNAME)/Lighter.git"
 BASEPATH="/"
 LOCAL_REPO_PATH="$(PWD)"
